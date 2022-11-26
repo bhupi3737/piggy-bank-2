@@ -21,19 +21,19 @@ The steps for assignment #2 are:
 
 Answer the following questions in 1-2 paragraphs in order to complete the assignment. 
 
-# 1. Why are oracles necessary on the blockchain?
+### 1. Why are oracles necessary on the blockchain?
 
 
 
-# 2. How does Chainlink ensure oracle data is trustworthy? 
+### 2. How does Chainlink ensure oracle data is trustworthy? 
 
 
 
-# 3. Why might pseudorandom number generation using keccak256 create a vulnerability for a smart contract? 
+### 3. Why might pseudorandom number generation using keccak256 create a vulnerability for a smart contract? 
 
 
 
-# 4. List four cases that would require the use of an oracle. 
+### 4. List four cases that would require the use of an oracle. 
 
 
 
