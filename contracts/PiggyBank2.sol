@@ -1,15 +1,15 @@
 // CCMP 606 Assignment 1
 // Piggy Bank Smart Contract w Oracle Interaction
-// Author: <<Update me>>
-
+// Author: <<Bhupinder Singh>>
+//My contract address <<0xBFd34ee17aE04568A58D410ee9aB47Fbb714513F>>
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.16;
 
-// My contract address:  <<Update me>>
-
-// Imports where needed
+import "@chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol";
 
 contract PiggyBank2 {
+
+    AggregatorV3Interface internal priceFeed;
 
     // Set a savings goal 
     // Set any other variables you need
@@ -21,6 +21,7 @@ contract PiggyBank2 {
     constructor() {
         owner = msg.sender;
         savingsGoal = 500;
+        priceFeed = AggregatorV3Interface(0xD4a33860578De61DBAbDc8BFdb98FD742fA7028e);
     }
     
     // Create an event to emit once you reach the savings goal 
@@ -72,9 +73,12 @@ contract PiggyBank2 {
     fallback() external payable {
         this.depositToTheBank();
     }
+    function getConversionUsd() public view returns (uint) {
+        (,int price , ,,) = priceFeed.latestRoundData();
+         uint UsdPrice = (uint(price)*address(this).balance)/1000000000000000000;
+         return UsdPrice;
+        }
+        
 
-    // Assignment 2: Add a function to get the value of the piggybank balance in USD (cents). So 100 = $1USD. 
-    // Note you will have to use an oracle to complete this assignment. 
-    // Chainlink has an oracle on Goerli that you can use. Assume 1GoerliETH = 1ETH (mainnet). 
-
+    
 }
